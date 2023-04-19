@@ -12,7 +12,30 @@
 <body>
 
 <?php
-  $passwordLength = $_GET['password_length'];
+  $passLength = $_GET['password_length'];
+
+  function randomPassword($number){
+
+    if(empty($number) || $number < 7 ){
+      echo '<div class="alert alert-danger" role="alert">
+              La password deve avere almeno 7 caratteri
+            </div>';
+    }else{
+      $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!1234567890';
+      $password = array();
+      $charactersLength = strlen($characters) -1;
+  
+      for($i = 0; $i < $number; $i++){
+      $n = rand(0, $charactersLength);
+      $password[] = $characters[$n];
+      }
+  
+    return implode($password);
+    }
+   
+  }
+  
+ 
 ?>
 
 <main>
@@ -24,6 +47,8 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<div class="result mt-5"><?php echo randomPassword($passLength)?></div>
   </div>
 </main>
   
