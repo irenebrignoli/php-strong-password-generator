@@ -5,7 +5,7 @@ function randomPassword($number){
   if (!empty($number)) {
     if ($number < 7) {
       echo '<div class="alert alert-danger" role="alert">
-              La password deve avere almeno 7 caratteri
+              La password deve avere almeno 7 caratteri!
             </div>';
     } else {
       $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!1234567890';
@@ -17,7 +17,10 @@ function randomPassword($number){
         $password[] = $characters[$n];
       }
 
-      return implode($password);
+      //return implode($password);
+      echo '<div class="alert alert-success">'.
+              implode($password).
+            '</div>';
     }
 
   }
